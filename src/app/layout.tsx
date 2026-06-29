@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Inter, Lato, Oswald } from 'next/font/google';
+import { Inter, Lato, Oswald, Kanit } from 'next/font/google';
 import './globals.css';
 
 const inter = Inter({ subsets: ['latin'] });
@@ -18,9 +18,16 @@ const oswald = Oswald({
   display: 'swap',
 });
 
+const kanit = Kanit({
+  weight: ['300', '400', '500', '600', '700', '800', '900'],
+  subsets: ['latin'],
+  variable: '--font-kanit',
+  display: 'swap',
+});
+
 export const metadata: Metadata = {
-  title: 'x2011 | UberViz Port',
-  description: 'Port of UberViz realtime visualizations to Next.js',
+  title: 'Jack -- 3D Creator',
+  description: 'Portfolio of Jack, 3D Creator',
 };
 
 export default function RootLayout({
@@ -30,7 +37,11 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} ${lato.variable} ${oswald.variable}`}>{children}</body>
+      <head>
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+      </head>
+      <body className={`${inter.className} ${lato.variable} ${oswald.variable} ${kanit.variable}`}>{children}</body>
     </html>
   );
 }
