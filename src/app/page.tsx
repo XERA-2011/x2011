@@ -221,7 +221,7 @@ const HeroSection = () => {
         <header className="flex justify-between items-center w-full">
           <nav className="flex justify-between w-full text-sm md:text-lg lg:text-[1.4rem] text-[#D7E2EA] font-medium uppercase tracking-wider">
             <a href="#about" className="hover:opacity-70 transition-opacity duration-200">About</a>
-            <a href="#price" className="hover:opacity-70 transition-opacity duration-200">Price</a>
+            <a href="#lab" className="hover:opacity-70 transition-opacity duration-200">Lab</a>
             <a href="#projects" className="hover:opacity-70 transition-opacity duration-200">Projects</a>
             <a href="#contact" className="hover:opacity-70 transition-opacity duration-200">Contact</a>
           </nav>
@@ -667,7 +667,7 @@ const ProjectsSection = () => {
   return (
     <section
       id="projects"
-      className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 pt-20 pb-32 relative z-10 w-full px-5 sm:px-8 md:px-10"
+      className="bg-[#0C0C0C] pt-20 pb-32 relative z-10 w-full px-5 sm:px-8 md:px-10"
     >
       <div className="max-w-5xl mx-auto">
         {/* Heading */}
@@ -702,6 +702,197 @@ const ProjectsSection = () => {
 };
 
 // ==========================================
+// CREATIVE LAB (VISUALIZATIONS) SECTION
+// ==========================================
+
+interface LabProject {
+  id: string;
+  title: string;
+  artist: string;
+  trackFile: string;
+  description: string;
+  bgGlow: string;
+}
+
+const labProjectsData: LabProject[] = [
+  {
+    id: 'loop',
+    title: 'Loop',
+    artist: 'Antigravity',
+    trackFile: 'EMDCR.mp3',
+    description: 'Generative 3D visualizer showcasing complex mathematical audio-reactive grid systems and camera loops.',
+    bgGlow: 'hover:shadow-[0_0_30px_rgba(6,182,212,0.15)] hover:border-cyan-500/30',
+  },
+  {
+    id: 'bbng',
+    title: 'BBNG',
+    artist: 'BADBADNOTGOOD',
+    trackFile: 'BBNG_Confessions_edit.mp3',
+    description: 'WebGL audio visualizer. Dynamic geometry reacting to low-frequency beats.',
+    bgGlow: 'hover:shadow-[0_0_30px_rgba(236,72,153,0.15)] hover:border-pink-500/30',
+  },
+  {
+    id: 'nero',
+    title: 'Nero',
+    artist: 'Nero',
+    trackFile: 'Nero_In_The_Way.mp3',
+    description: 'Realtime shader-based particles synced to heavy electronic bass rhythms.',
+    bgGlow: 'hover:shadow-[0_0_30px_rgba(168,85,247,0.15)] hover:border-purple-500/30',
+  },
+  {
+    id: 'pareidolia',
+    title: 'Pareidolia',
+    artist: 'Hecq',
+    trackFile: 'Szerencsetlen_edit03.mp3',
+    description: 'Dense point clouds and WebGL particle fields morphing to electronic waves.',
+    bgGlow: 'hover:shadow-[0_0_30px_rgba(234,179,8,0.15)] hover:border-yellow-500/30',
+  },
+  {
+    id: 'splice',
+    title: 'Splice',
+    artist: 'Amon Tobin',
+    trackFile: 'scream.mp3',
+    description: 'Organic glitch geometry and mechanical structures synchronized to audio waves.',
+    bgGlow: 'hover:shadow-[0_0_30px_rgba(239,68,68,0.15)] hover:border-red-500/30',
+  },
+  {
+    id: 'word-problems',
+    title: 'Word Problems',
+    artist: 'deadmau5',
+    trackFile: 'Word_Problems_Edit.mp3',
+    description: 'Dynamic typographical and vector visualization reacting to complex electronic patterns.',
+    bgGlow: 'hover:shadow-[0_0_30px_rgba(34,197,94,0.15)] hover:border-green-500/30',
+  },
+];
+
+const featuredLabProject = {
+  id: 'lantern',
+  title: 'ÜberViz (Lantern)',
+  artist: 'Sbtrkt',
+  trackFile: 'Lantern.mp3',
+  description: 'Our flagship generative music visualizer. Features Web Audio API processing, presets panel, automatic beat progression, custom shader filters, load-your-own MP3 files, and microphone-reactive inputs.',
+  bgGlow: 'hover:shadow-[0_0_40px_rgba(6,182,212,0.25)] hover:border-cyan-400/40',
+};
+
+const LabSection = () => {
+  return (
+    <section
+      id="lab"
+      className="bg-[#0C0C0C] rounded-t-[40px] sm:rounded-t-[50px] md:rounded-t-[60px] -mt-10 sm:-mt-12 md:-mt-14 pt-20 pb-20 relative z-10 w-full px-5 sm:px-8 md:px-10"
+    >
+      <div className="max-w-5xl mx-auto">
+        {/* Heading */}
+        <div className="text-center mb-6 select-none">
+          <h2
+            className="hero-heading font-black uppercase leading-none tracking-tight"
+            style={{ fontSize: 'clamp(3rem, 12vw, 160px)' }}
+          >
+            Creative Lab
+          </h2>
+        </div>
+
+        <div className="text-center mb-16 max-w-2xl mx-auto">
+          <p className="text-[#D7E2EA]/60 font-mono text-xs sm:text-sm tracking-widest uppercase">
+            [ Interactive WebGL Audio Visualizers ]
+          </p>
+        </div>
+
+        {/* Featured Card */}
+        <FadeIn delay={0.1} y={30} className="mb-8">
+          <a
+            href={`/viz/${featuredLabProject.id}`}
+            target="_blank"
+            rel="noopener noreferrer"
+            className={`block bg-[#121212] border border-[#D7E2EA]/10 rounded-[30px] p-6 sm:p-8 md:p-10 transition-all duration-300 ${featuredLabProject.bgGlow} group hover:scale-[1.01]`}
+          >
+            <div className="flex flex-col md:flex-row justify-between gap-6 md:gap-12">
+              <div className="flex-1 flex flex-col justify-between">
+                <div>
+                  <div className="flex items-center gap-3 mb-4">
+                    <span className="bg-cyan-500/10 text-cyan-400 font-mono text-[10px] tracking-widest uppercase px-2.5 py-1 rounded-full border border-cyan-500/20">
+                      Featured Experience
+                    </span>
+                    <span className="text-xs uppercase tracking-widest text-[#D7E2EA]/40 font-mono">
+                      Realtime 3D
+                    </span>
+                  </div>
+                  <h3 className="text-2xl sm:text-3xl font-black uppercase text-[#D7E2EA] tracking-wide mb-4 group-hover:text-cyan-400 transition-colors">
+                    {featuredLabProject.title}
+                  </h3>
+                  <p className="text-[#D7E2EA]/70 font-light leading-relaxed mb-6 text-sm sm:text-base max-w-3xl">
+                    {featuredLabProject.description}
+                  </p>
+                </div>
+                <div className="mt-4 font-mono text-[11px] sm:text-xs text-[#D7E2EA]/50 space-y-1 border-t border-[#D7E2EA]/10 pt-4">
+                  <div><span className="text-cyan-400/80">MUSIC:</span> {featuredLabProject.artist} — {featuredLabProject.trackFile}</div>
+                  <div><span className="text-cyan-400/80">TECH:</span> Three.js / WebGL / Web Audio API</div>
+                </div>
+              </div>
+              <div className="flex items-center justify-center shrink-0">
+                <div className="w-14 h-14 rounded-full border border-[#D7E2EA]/20 flex items-center justify-center group-hover:bg-[#D7E2EA] group-hover:border-[#D7E2EA] transition-all duration-300">
+                  <svg
+                    className="w-5 h-5 text-[#D7E2EA] group-hover:text-[#0C0C0C] transition-colors transform group-hover:translate-x-0.5"
+                    fill="none"
+                    stroke="currentColor"
+                    strokeWidth="2.5"
+                    viewBox="0 0 24 24"
+                  >
+                    <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                  </svg>
+                </div>
+              </div>
+            </div>
+          </a>
+        </FadeIn>
+
+        {/* 6 Grid Cards */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+          {labProjectsData.map((lab, i) => (
+            <FadeIn key={lab.id} delay={i * 0.05 + 0.2} y={30}>
+              <a
+                href={`/viz/${lab.id}`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex flex-col justify-between h-full bg-[#121212] border border-[#D7E2EA]/10 rounded-[24px] p-6 sm:p-7 transition-all duration-300 ${lab.bgGlow} group hover:scale-[1.02]`}
+              >
+                <div>
+                  <div className="flex items-center justify-between mb-4">
+                    <span className="text-[10px] uppercase tracking-widest text-[#D7E2EA]/40 font-mono">
+                      WebGL Lab
+                    </span>
+                    <span className="text-[9px] uppercase tracking-widest bg-[#D7E2EA]/5 text-[#D7E2EA]/60 font-mono px-2 py-0.5 rounded border border-[#D7E2EA]/10">
+                      0{i+1}
+                    </span>
+                  </div>
+                  <h4 className="text-lg sm:text-xl font-bold uppercase text-[#D7E2EA] tracking-wide mb-3 group-hover:text-white transition-colors">
+                    {lab.title}
+                  </h4>
+                  <p className="text-[#D7E2EA]/60 font-light text-xs sm:text-sm leading-relaxed mb-6">
+                    {lab.description}
+                  </p>
+                </div>
+                <div>
+                  <div className="font-mono text-[10px] text-[#D7E2EA]/40 border-t border-[#D7E2EA]/5 pt-4 mb-4">
+                    <div className="truncate"><span className="text-[#D7E2EA]/60">TRACK:</span> {lab.trackFile}</div>
+                    <div className="mt-0.5"><span className="text-[#D7E2EA]/60">BY:</span> {lab.artist}</div>
+                  </div>
+                  <div className="flex items-center gap-2 text-xs font-mono text-[#D7E2EA]/50 group-hover:text-[#D7E2EA] transition-colors">
+                    <span>LAUNCH LAB</span>
+                    <svg className="w-3.5 h-3.5 transform group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
+                      <path strokeLinecap="round" strokeLinejoin="round" d="M13.5 4.5L21 12m0 0l-7.5 7.5M21 12H3" />
+                    </svg>
+                  </div>
+                </div>
+              </a>
+            </FadeIn>
+          ))}
+        </div>
+      </div>
+    </section>
+  );
+};
+
+// ==========================================
 // MAIN PAGE EXPORT
 // ==========================================
 export default function Home() {
@@ -711,6 +902,7 @@ export default function Home() {
       <MarqueeSection />
       <AboutSection />
       <ServicesSection />
+      <LabSection />
       <ProjectsSection />
     </main>
   );
